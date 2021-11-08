@@ -1,0 +1,20 @@
+x <- read.csv("st_data.csv")
+y <- c(x$midterm)
+print(range(y))
+print(as.integer(mean(y)))
+print(as.integer(var(y)))
+print(as.integer(sd(y)))
+breaks = seq(0,100, by=10)
+y.cut = cut(y,breaks,right = FALSE)
+mid.freq = table(y.cut)
+mf = cbind(mid.freq)
+print(mf)
+png(file="aa.png")
+hist(y, right = FALSE, main = "Frequency",
+     xlab = "Midterm Exam", ylab="Count",col = "white")
+invisible(dev.off())
+png(file = "bb.png")
+plot(y,c(x$final),xlab = "Midterm Exam", ylab = "Final Exam",
+     main="Scatter")
+invisible(dev.off())
+
